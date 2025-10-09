@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EMPLEADOS>
+    <Empleado>
+        <CODIGO>1</CODIGO>
+        <COMISION>12.0</COMISION>
+        <DIRECCION>Madrid</DIRECCION>
+        <NOMBRE>Juan</NOMBRE>
+        <SALARIO>1500.0</SALARIO>
+    </Empleado>
+    <Empleado>
+        <CODIGO>2</CODIGO>
+        <COMISION>9.0</COMISION>
+        <DIRECCION>Murcia</DIRECCION>
+        <NOMBRE>María</NOMBRE>
+        <SALARIO>1700.0</SALARIO>
+    </Empleado>
+    <Empleado>
+        <CODIGO>3</CODIGO>
+        <COMISION>10.0</COMISION>
+        <DIRECCION>Sevilla</DIRECCION>
+        <NOMBRE>Luis</NOMBRE>
+        <SALARIO>1600.0</SALARIO>
+    </Empleado>
+    <Empleado>
+        <CODIGO>4</CODIGO>
+        <COMISION>11.0</COMISION>
+        <DIRECCION>Barcelona</DIRECCION>
+        <NOMBRE>Ana</NOMBRE>
+        <SALARIO>1800.0</SALARIO>
+    </Empleado>
+    <Empleado>
+        <CODIGO>5</CODIGO>
+        <COMISION>8.5</COMISION>
+        <DIRECCION>Valencia</DIRECCION>
+        <NOMBRE>Carlos</NOMBRE>
+        <SALARIO>1550.0</SALARIO>
+    </Empleado>
+</EMPLEADOS>
