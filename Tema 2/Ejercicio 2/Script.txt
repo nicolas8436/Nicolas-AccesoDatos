@@ -1,0 +1,9 @@
+CREATE TABLE estudiantes (
+    nif VARCHAR2(10) PRIMARY KEY,
+    nombre VARCHAR2(30) NOT NULL,
+    edad NUMBER(3) NOT NULL
+);
+
+INSERT INTO estudiantes (nif, nombre, edad) VALUES ('12345678A', 'Juan Domingez', 20);
+INSERT INTO estudiantes (nif, nombre, edad) VALUES ('87654321B', 'María López', 22);
+INSERT INTO estudiantes (nif, nombre, edad) VALUES ('11223344C', 'Fernando Alonso', 19);

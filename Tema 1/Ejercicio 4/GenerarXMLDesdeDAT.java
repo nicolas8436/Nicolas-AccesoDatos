@@ -42,6 +42,7 @@ public class GenerarXMLDesdeDAT {
 
                     Element elementoEmpleado = doc.createElement("Empleado");// Creamos el elemento empleado
                     elementoRaiz.appendChild(elementoEmpleado);// Lo hacemos hijo de la raiz
+                    // Tu ^ haces hijo al parentesis ^
 
                     // Crear y añadir elemento <CODIGO>
                     Element codigo = doc.createElement("CODIGO");
@@ -50,7 +51,17 @@ public class GenerarXMLDesdeDAT {
 
                     // Crear y añadir elemento <COMISION>
                     Element comision = doc.createElement("COMISION");
-                    comision.appendChild(doc.createTextNode(String.valueOf(empleado.getComision())));
+                    comision.appendChild(doc.createTextNode(String.valueOf(empleado.getComision())));// INterior de los
+                                                                                                     // parentesis pasa
+                                                                                                     // a String el
+                                                                                                     // valor de
+                                                                                                     // comision y el
+                                                                                                     // exterior hace q
+                                                                                                     // eso sea hijo de
+                                                                                                     // la etiqueta
+                                                                                                     // comision
+                                                                                                     // String.valueof
+                                                                                                     // int ->String
                     elementoEmpleado.appendChild(comision);
 
                     // Crear y añadir elemento <DIRECCION>
@@ -89,10 +100,10 @@ public class GenerarXMLDesdeDAT {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");// Pone sangrias
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
 
-            DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("EMPLEADOS.XML"));
+            DOMSource source = new DOMSource(doc);// Crea en memoria
+            StreamResult result = new StreamResult(new File("EMPLEADOS.XML"));// Crea en memoria donde estara el doc
 
-            transformer.transform(source, result);
+            transformer.transform(source, result);// Crea el documento con la info en memoria
 
             System.out.println("Archivo EMPLEADOS.XML creado correctamente!");
 

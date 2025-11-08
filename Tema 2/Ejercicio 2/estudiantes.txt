@@ -1,0 +1,5 @@
+6666,felipe,18
+7777,amelia,16
+8888,rosa,15
+9999,gonzalo,13
+1010,federico,16
