@@ -13,7 +13,7 @@ public class ConectaEstudiantes {
         this.scanner = new Scanner(System.in);
     }
 
-    public void conectar() {// Conectar
+    public void conectar() {// Conectar//////////////////////////////////////////////////////////////////////////////
         try {
             String urijdbc = "jdbc:oracle:thin:@localhost:49161:xe";
             conexion = DriverManager.getConnection(urijdbc, "Nicolas", "Nicolas");
@@ -23,7 +23,7 @@ public class ConectaEstudiantes {
         }
     }// Conectar
 
-    public void desconectar() {// Desconectar
+    public void desconectar() {// Desconectar//////////////////////////////////////////////////////////////////////////
         try {
             if (conexion != null && !conexion.isClosed()) {
                 conexion.close();
@@ -34,7 +34,7 @@ public class ConectaEstudiantes {
         }
     }// Desconectar
 
-    public void insertar(Estudiante e) {// Insertar
+    public void insertar(Estudiante e) {// Insertar////////////////////////////////////////////////////////////////////
         if (conexion == null) {
             System.out.println("Primero debes conectar con la base de datos");
             return;
@@ -56,7 +56,8 @@ public class ConectaEstudiantes {
         }
     }// Insertar
 
-    public void actualizarEdad(String nif, int nuevaEdad) {// Actualizar edad
+    public void actualizarEdad(String nif, int nuevaEdad) {// Actualizar
+                                                           // edad///////////////////////////////////////////////////////////
         if (conexion == null) {
             System.out.println("Primero debes conectar con la base de datos");
             return;
@@ -81,7 +82,8 @@ public class ConectaEstudiantes {
         }
     } // Actualizar edad
 
-    public void borrarPreguntando(String nif) {// Borrar estudiante
+    public void borrarPreguntando(String nif) {// Borrar
+                                               // estudiante///////////////////////////////////////////////////////////////
         if (conexion == null) {
             System.out.println("Primero debes conectar con la base de datos");
             return;
@@ -117,7 +119,8 @@ public class ConectaEstudiantes {
         }
     }// Borrar estudiante
 
-    public void estudiantesEntreEdades(int edadMin, int edadMax) {// Entre edades
+    public void estudiantesEntreEdades(int edadMin, int edadMax) {// Entre
+                                                                  // edades//////////////////////////////////////////////////////
         if (conexion == null) {
             System.out.println("Primero debes conectar con la base de datos");
             return;
@@ -149,7 +152,8 @@ public class ConectaEstudiantes {
         }
     }// Entre edades
 
-    // Método para insertar desde archivo CSV
+    // Método para insertar desde archivo
+    // CSV///////////////////////////////////////////////////////////////
     public void insertarDesdeArchivo() {
         if (conexion == null) {
             System.out.println("Primero debes conectar con la base de datos");
@@ -185,7 +189,7 @@ public class ConectaEstudiantes {
         }
     }
 
-    private boolean existeEstudiante(String nif) {// existe estudiante
+    private boolean existeEstudiante(String nif) {// existe estudiante//////////////////////////////////
         String sql = "SELECT COUNT(*) FROM estudiantes WHERE nif = ?";
 
         try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
@@ -202,7 +206,7 @@ public class ConectaEstudiantes {
         return false;
     }// existe estudiante
 
-    private String obtenerNombre(String nif) {// Obtener nombre
+    private String obtenerNombre(String nif) {// Obtener nombre////////////////////////////////////////
         String sql = "SELECT nombre FROM estudiantes WHERE nif = ?";
 
         try (PreparedStatement pstmt = conexion.prepareStatement(sql)) {
