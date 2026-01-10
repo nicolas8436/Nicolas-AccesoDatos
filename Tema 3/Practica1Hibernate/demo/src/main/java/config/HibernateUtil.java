@@ -4,22 +4,18 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static final SessionFactory sessionFactory;
 
-    private static SessionFactory buildSessionFactory() {
+    static {
         try {
-            return new Configuration().configure().buildSessionFactory();
+            sessionFactory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
-            System.err.println("Error al crear SessionFactory: " + ex);
-            throw new ExceptionInInitializerError(ex);
+            System.out.println("Error de la conexion " + ex.getMessage());
+            throw new ExceptionInInitializerError();
         }
     }
 
-    public static SessionFactory getSessionFactory() {
+    public static SessionFactory get() {
         return sessionFactory;
-    }
-
-    public static void shutdown() {
-        getSessionFactory().close();
     }
 }
