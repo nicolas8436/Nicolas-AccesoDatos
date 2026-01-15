@@ -12,9 +12,9 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         
-        <mapping class="entities.Modulo"/>
-        <mapping class="entities.Centro"/>
-        <mapping class="entities.Alumno"/>
+        <mapping class="entities.Actores"/>
+        <mapping class="entities.Directores"/>
+        <mapping class="entities.Peliculas"/>
         <mapping class="repositories.Repository"/>
     </session-factory>
 </hibernate-configuration>
