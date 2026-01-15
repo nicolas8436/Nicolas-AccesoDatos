@@ -1,4 +1,4 @@
-package com.p1hibernate_nicolas;
+package com.p2hibernate_nicolas;
 
 import static org.junit.Assert.assertTrue;
 
