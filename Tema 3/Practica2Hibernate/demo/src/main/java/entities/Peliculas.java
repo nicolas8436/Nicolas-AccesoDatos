@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Peliculas{
 @Id
 @Column
-@GeneratedValue(strategy= GenerationType.IDENTITY)
+@GeneratedValue(strategy= GenerationType.AUTO)
 private long peliculaId;
 private String titulo;
 private String fecha_Estreno; 
@@ -17,8 +17,9 @@ private String fecha_Estreno;
 @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
 private Set<Actores> actores;
 
-@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
-private Set<Directores> directores;
+@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "DIRECTOR_ID")  // Columna FK en tabla PELICULAS
+    private Directores director;
 
 public Peliculas(){}
 public Peliculas(long pId, String tit, String estreno){
@@ -58,19 +59,16 @@ public void setFecha_Estreno(String fecha_Estreno) {
     this.fecha_Estreno = fecha_Estreno;
 }
 
-public Set<Directores> getDirectores(){
-    return directores;
+public Directores getdirector(){
+    return director;
 }
 
 public Set<Actores> getActores(){
     return actores;
 }
 
-public void addDirector(Directores d){
-    if(directores == null){
-        directores = new HashSet<Directores>();
-    }
-    directores.add(d);
+public void setDirector(Directores d){
+   this.director = d;
 }
 
 public void addActor(Actores a){

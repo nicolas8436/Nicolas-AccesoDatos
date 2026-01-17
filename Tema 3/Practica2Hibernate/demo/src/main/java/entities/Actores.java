@@ -1,7 +1,7 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
+/*import java.util.ArrayList;
+import java.util.List;*/
 
 import javax.persistence.*;
 
@@ -9,13 +9,13 @@ import javax.persistence.*;
 public class Actores{
 @Id
 @Column
-@GeneratedValue(strategy= GenerationType.IDENTITY)
+@GeneratedValue(strategy= GenerationType.AUTO)
 private long actorId;
 private String nombre;
 private String fecha_Nac;
 
-@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
-private List<Peliculas> peliculas;
+/*@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
+private List<Peliculas> peliculas;*/
 
 public Actores(){}
 public Actores(long aId, String nombre, String fecha_Nac){
@@ -24,12 +24,12 @@ public Actores(long aId, String nombre, String fecha_Nac){
     this.fecha_Nac = fecha_Nac;
 }
 
-public Actores(long aId, String nombre, String fecha_Nac, List<Peliculas> peliculas){
+/*public Actores(long aId, String nombre, String fecha_Nac, List<Peliculas> peliculas){
     this.actorId = aId;
     this.nombre = nombre;
     this.fecha_Nac = fecha_Nac;
     this.peliculas = peliculas;
-}
+}*/
 
 
 public long getActorId() {
@@ -56,7 +56,7 @@ public void setFecha_Nac(String fecha_Nac) {
     this.fecha_Nac = fecha_Nac;
 }
 
-    public List<Peliculas> getPelis() {
+    /*public List<Peliculas> getPelis() {
         return peliculas;
     }
 
@@ -67,5 +67,5 @@ public void setFecha_Nac(String fecha_Nac) {
         }
 
         peliculas.add(pelicula);
-    }
+    }*/
 }

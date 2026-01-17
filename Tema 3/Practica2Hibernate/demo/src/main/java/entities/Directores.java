@@ -1,7 +1,7 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
+/*import java.util.ArrayList;
+import java.util.List;*/
 
 import javax.persistence.*;
 
@@ -10,13 +10,16 @@ import javax.persistence.*;
 public class Directores{
 @Id
 @Column
-@GeneratedValue(strategy= GenerationType.IDENTITY)
+@GeneratedValue(strategy= GenerationType.AUTO)
 private long directorId;
 private String nombre;
 private String fecha_Nac; 
 
-@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
-private List<Peliculas> peliculas;
+@OneToOne(mappedBy = "director", fetch = FetchType.LAZY)
+private Peliculas pelicula;
+
+/*@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) 
+private List<Peliculas> peliculas;*/
 
 public Directores(){}
 public Directores(long pId, String nombre, String fecha_Nac){
@@ -25,12 +28,12 @@ public Directores(long pId, String nombre, String fecha_Nac){
     this.fecha_Nac = fecha_Nac;
 }
 
-public Directores(long pId, String nombre, String fecha_Nac, List<Peliculas> peliculas){
+/*public Directores(long pId, String nombre, String fecha_Nac, List<Peliculas> peliculas){
     this.directorId = pId;
     this.nombre = nombre;
     this.fecha_Nac = fecha_Nac;
     this.peliculas=peliculas;
-}
+}*/
 
 
 public long getDirectorId() {
@@ -57,7 +60,10 @@ public void setFecha_Nac(String fecha_Nac) {
     this.fecha_Nac = fecha_Nac;
 }
 
-public List<Peliculas> getPeliculas() {
+public Peliculas getPelicula() { return pelicula; }
+public void setPelicula(Peliculas pelicula) { this.pelicula = pelicula; }
+
+/*public List<Peliculas> getPeliculas() {
     return peliculas;
 }
 
@@ -67,6 +73,6 @@ public void addPeliculas(Peliculas pelicula) {
     }
 
     peliculas.add(pelicula);
-}
+}*/
 }
 
