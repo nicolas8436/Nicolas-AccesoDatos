@@ -1,0 +1,37 @@
+CREATE or REPLACE TYPE ALUMNO AS OBJECT(
+    CODIGO NUMBER,
+    NOMBRE VARCHAR2(30),
+    APELLIDOS VARCHAR2(30),
+    FECHA_NAC DATE,
+    NOTA NUMBER,
+    
+    MEMBER PROCEDURE PONER_NOTA(p_nota IN NUMBER),
+    MEMBER FUNCTION VER_NOTA RETURN NUMBER,
+    MEMBER FUNCTION VER_EDAD RETURN NUMBER)
+    
+    
+CREATE OR REPLACE TYPE BODY ALUMNO AS
+    
+    -- Método para asignar una nota
+    MEMBER PROCEDURE PONER_NOTA(p_nota IN NUMBER) IS
+    BEGIN
+        IF p_nota BETWEEN 0 AND 10 THEN
+            SELF.NOTA := p_nota;
+        ELSE
+            RAISE_APPLICATION_ERROR(-20001, 'La nota debe estar entre 0 y 10');
+        END IF;
+    END;
+    
+    -- Método para consultar la nota
+    MEMBER FUNCTION VER_NOTA RETURN NUMBER IS
+    BEGIN
+        RETURN SELF.NOTA;
+    END;
+    
+    -- Método para calcular la edad
+    MEMBER FUNCTION VER_EDAD RETURN NUMBER IS
+    BEGIN
+        RETURN TRUNC(MONTHS_BETWEEN(SYSDATE, SELF.FECHA_NAC) / 12);
+    END;
+    
+END;
