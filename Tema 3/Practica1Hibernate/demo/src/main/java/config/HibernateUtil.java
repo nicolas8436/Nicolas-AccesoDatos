@@ -18,4 +18,11 @@ public class HibernateUtil {
     public static SessionFactory get() {
         return sessionFactory;
     }
+    
+    public static void shutdown() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+            System.out.println("SessionFactory cerrada correctamente");
+        }
+    }
 }

@@ -9,7 +9,12 @@ public class Alumno extends Persona {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "centro_id", referencedColumnName = "centro_id", foreignKey = @ForeignKey(name = "FK_alumno_centro"))
     private Centro centro;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.DETACH)
+    @JoinTable(
+        name="alumnos_modulos",
+        joinColumns = @JoinColumn(name = "personas_id"),
+        inverseJoinColumns=@JoinColumn(name= "modulo_id")
+    )
     private List<Modulo> modulos;
     private int edad;
 

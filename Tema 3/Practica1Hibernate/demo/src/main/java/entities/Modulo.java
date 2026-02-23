@@ -1,11 +1,15 @@
 package entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 //import java.lang.annotation.Inherited;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity(name = "modulos")
 public class Modulo {
@@ -15,7 +19,8 @@ public class Modulo {
     private long moduloId;
     private String nombre;
     private String abreviatura;
-
+    @ManyToMany(cascade=CascadeType.DETACH, mappedBy="modulos")
+    private List<Alumno> alumnos;
     public Modulo() {
     }
 
