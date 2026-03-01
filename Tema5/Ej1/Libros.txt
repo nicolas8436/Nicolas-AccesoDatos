@@ -1,0 +1,29 @@
+Listar el título de todos los libros.
+for $libro in //libro return $libro/titulo
+
+Listar año y título de todos los libros, ordenados por el año.
+for $libro in //libro order by $libro/@año return concat($libro/@año, ": ", $libro/titulo)
+
+Listar los libros cuyo precio sea 65.95
+//libro[precio = 65.95]
+
+Listar los libros publicados antes del año 2000
+//libro[@año < 2000]
+
+Listar año y título de los libros publicados por Addison-Wesley después del año 1992.
+for $libro in //libro[editorial = "Addison-Wesley" and @año > 1992] return concat($libro/@año, ": ", $libro/titulo)
+
+Listar año y título de los libros que tienen más de un autor.
+for $libro in //libro[count(autor) > 1] return concat($libro/@año, ": ", $libro/titulo)
+
+Listar año y título de los libros que no tienen autor.
+for $libro in //libro[empty(autor)] return concat($libro/@año, ": ", $libro/titulo)
+
+Mostrar los apellidos de los autores que aparecen en el documento, sin repeticiones, ordenados alfabéticamente.
+let $apellidos := distinct-values(//autor/apellido) for $apellido in $apellidos order by $apellido return $apellido
+
+Por cada libro, listar agrupado en un elemento <result> su título y autores
+for $libro in //libro return <result><titulo>{ $libro/titulo/text() }</titulo><autores>{ $libro/autor }</autores></result>
+
+Por cada libro, obtener su título y el número de autores, agrupados en un elemento <libro>
+for $libro in //libro return <libro><titulo>{ $libro/titulo/text() }</titulo><numAutores>{ count($libro/autor) }</numAutores></libro>

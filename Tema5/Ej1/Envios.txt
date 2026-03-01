@@ -1,0 +1,35 @@
+Seleccionar los tomadores de todas las pólizas
+//poliza/tomador
+
+Obtener el número total de pólizas
+count(//poliza)
+
+Obtener el primer asegurado de cada póliza
+//poliza/asegurado[1]
+
+Seleccionar los primeros asegurados de las pólizas solo si tienen más de dos garantías contratadas
+//poliza/asegurado[1][count(garantia) > 2]
+
+Seleccionar los asegurados que tengan contratada la garantía dental
+//asegurado[garantia/tipo = "Dental"]
+
+Seleccionar las pólizas con el indicador externa
+//poliza[@externa = "S"]
+
+Seleccionar todas las garantías que tienen el indicador vigor con valor 'N'
+//garantia[@vigor = "N"]
+
+Seleccionar todos los capitales de garantías que tienen el indicador vigor = 'S'
+//garantia[@vigor = "S"]/capital
+
+Seleccionar los tomadores de las pólizas, solo si la póliza tiene dos o más asegurados
+//poliza[count(asegurado) >= 2]/tomador
+
+Seleccionar todos los asegurados cuyo nombre empieza por la letra 'J'
+//asegurado[starts-with(@nombre, "J")]
+
+Obtener la suma de capitales de las garantías en vigor
+sum(//garantia[@vigor = "S"]/capital)
+
+Seleccionar las pólizas con alguna garantía cuyo capital sea de 80000 euros
+//poliza[.//garantia/capital = 80000]
