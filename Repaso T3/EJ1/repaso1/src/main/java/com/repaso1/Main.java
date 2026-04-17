@@ -1,6 +1,5 @@
-package com.p1hibernate_nicolas;
+package com.repaso1;
 
-import java.io.ObjectInputFilter.Config;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,10 +29,6 @@ public class Main {
             // Solo necesitamos hacer una operación para que se genere el esquema
             
             System.out.println("Tablas creadas exitosamente:");
-            System.out.println("- alumnos");
-            System.out.println("- Centros");
-            System.out.println("- modulos");
-            System.out.println("- alumnos_modulos");
             
             // Commit de la transacción
             transaction.commit();
