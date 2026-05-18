@@ -50,7 +50,7 @@ public class ConsultasHQL {
         if (supers.size() == 0){
             System.out.println("No hay heroes con " + poderes + " poderes");
         }else{
-            System.out.println("Supers con mas de " + poderes +" poderes:");
+            System.out.println("Supers con " + poderes +" poderes:");
             for(Object s : supers){
                 System.out.println(s);
             }
@@ -68,4 +68,35 @@ public class ConsultasHQL {
             System.out.println("Nombre equipo: " + e[0] + " Base secreta: " + e[1]);
         }
     }
+
+    public static void Consulta4(Session session, int num){
+        String hql4 = "Select e.nombre From Equipos e Where size(e.superheroe) = " + num;
+
+        Query<Object> query = session.createQuery(hql4, Object.class);
+
+        List<Object> equipo = query.getResultList();
+        
+        if (equipo.size() == 0){
+            System.out.println("No hay equipos con " + num + " supers");
+        }else{
+            System.out.println("Equipos con " + num +" supers:");
+            for(Object e : equipo){
+                System.out.println(e);
+            }
+        }
+    }
+
+    public static void Consulta5(Session session){
+        String hql5 = "Select s.nombre, s.nivel, s.edad, s.equipo.nombre From Superheroes s where size(s.poderes) > 1 ";
+
+        Query<Object[]> query = session.createQuery(hql5, Object[].class);
+
+        List<Object[]> supers = query.getResultList();
+
+        for(Object[] s : supers){
+            System.out.println("Nombre heroe: " + s[0] + " Nivel: " + s[1] + " Edad: " + s[2] + " Nombre equipo: " + s[3]);
+        }
+    }
+
+
 }

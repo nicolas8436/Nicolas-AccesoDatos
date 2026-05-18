@@ -18,7 +18,7 @@ public class Superheroes {
     private int nivel;
 
     @ManyToOne
-    @JoinColumn(name = "superheroe")
+    @JoinColumn(name = "Equipo")
     private Equipos equipo;
 
     @ManyToMany(cascade = CascadeType.ALL)
