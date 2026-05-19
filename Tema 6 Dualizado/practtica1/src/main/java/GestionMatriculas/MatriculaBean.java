@@ -15,20 +15,16 @@ import java.util.logging.Logger;
 
 public class MatriculaBean implements Serializable {
 
-    // Propiedades del Bean
     protected String DNI;
     protected String NombreModulo;
     protected String Curso;
     protected double Nota;
     
-    // Propiedades de estado y eventos
-    protected boolean modo; // true = todas, false = DNI particular
+    protected boolean modo; 
     protected Vector<Matricula> Matriculas = new Vector<Matricula>();
     protected ModoModificadoListener receptor;
 
-    // --- CLASES E INTERFACES INTERNAS ---
 
-    // REPARADO: Añadido 'static' para que el Main pueda leer el Vector libremente sin errores de visibilidad
     public static class Matricula {
         public String dni;
         public String nombreModulo;
@@ -60,7 +56,6 @@ public class MatriculaBean implements Serializable {
         public void capturarModoModificado(ModoModificadoEvent ev);
     }
 
-    // --- CONSTRUCTOR ---
     public MatriculaBean() {
         try {
             recargarFilas(); 
@@ -73,9 +68,7 @@ public class MatriculaBean implements Serializable {
         }
     }
 
-    // --- MÉTODOS OBLIGATORIOS DE LA PRÁCTICA ---
 
-    // Carga TODAS las matrículas en el Vector
     public void recargarFilas() throws ClassNotFoundException {
         try {
             Matriculas.clear();
@@ -110,7 +103,6 @@ public class MatriculaBean implements Serializable {
         }
     }
 
-    // Carga las matrículas de un DNI concreto
     public void recargarDNI(String nDNI) throws ClassNotFoundException {
         try {
             Matriculas.clear();
@@ -147,7 +139,6 @@ public class MatriculaBean implements Serializable {
         }
     }
 
-    // Recupera en las propiedades el registro 'i' del vector
     public void seleccionarFila(int i) {
         if (i >= 0 && i < Matriculas.size()) {
             Matricula m = Matriculas.get(i);
@@ -158,7 +149,6 @@ public class MatriculaBean implements Serializable {
         }
     }
 
-    // Añade una matrícula a partir de las propiedades actuales del componente
     public void addMatricula() throws ClassNotFoundException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -194,7 +184,6 @@ public class MatriculaBean implements Serializable {
         this.receptor = null;
     }
 
-    // --- GETTERS Y SETTERS PROPIEDADES ---
     public String getDNI() { return DNI; }
     public void setDNI(String DNI) { this.DNI = DNI; }
 
